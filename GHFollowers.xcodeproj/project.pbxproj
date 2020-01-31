@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		4B38C06523E459BA0084E8DE /* Follower.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B38C06423E459BA0084E8DE /* Follower.swift */; };
 		4B38C06723E45AD40084E8DE /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B38C06623E45AD40084E8DE /* User.swift */; };
+		4B38C06B23E462330084E8DE /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B38C06A23E462330084E8DE /* NetworkManager.swift */; };
 		4BCC4F9B23E342A300623DDA /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BCC4F9A23E342A300623DDA /* SearchViewController.swift */; };
 		4BCC4F9D23E3431C00623DDA /* FavoritesListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BCC4F9C23E3431C00623DDA /* FavoritesListViewController.swift */; };
 		4BCC4F9F23E34B0000623DDA /* GFButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BCC4F9E23E34B0000623DDA /* GFButton.swift */; };
@@ -27,6 +28,7 @@
 /* Begin PBXFileReference section */
 		4B38C06423E459BA0084E8DE /* Follower.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Follower.swift; sourceTree = "<group>"; };
 		4B38C06623E45AD40084E8DE /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		4B38C06A23E462330084E8DE /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		4BCC4F9A23E342A300623DDA /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		4BCC4F9C23E3431C00623DDA /* FavoritesListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesListViewController.swift; sourceTree = "<group>"; };
 		4BCC4F9E23E34B0000623DDA /* GFButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GFButton.swift; sourceTree = "<group>"; };
@@ -62,6 +64,14 @@
 				4B38C06623E45AD40084E8DE /* User.swift */,
 			);
 			path = Models;
+			sourceTree = "<group>";
+		};
+		4B38C06823E4620D0084E8DE /* Managers */ = {
+			isa = PBXGroup;
+			children = (
+				4B38C06A23E462330084E8DE /* NetworkManager.swift */,
+			);
+			path = Managers;
 			sourceTree = "<group>";
 		};
 		4BCC4FAC23E447DC00623DDA /* Screens */ = {
@@ -125,6 +135,7 @@
 		4BF667C323E21BB8008C827C /* GHFollowers */ = {
 			isa = PBXGroup;
 			children = (
+				4B38C06823E4620D0084E8DE /* Managers */,
 				4B38C06323E4599F0084E8DE /* Models */,
 				4BCC4FAF23E4536700623DDA /* Support */,
 				4BCC4FAE23E4504C00623DDA /* Extensions */,
@@ -214,6 +225,7 @@
 				4BCC4FA723E43B3700623DDA /* GFBodyLabel.swift in Sources */,
 				4B38C06523E459BA0084E8DE /* Follower.swift in Sources */,
 				4BCC4FA523E4246000623DDA /* GFTitleLabel.swift in Sources */,
+				4B38C06B23E462330084E8DE /* NetworkManager.swift in Sources */,
 				4BF667C523E21BB8008C827C /* AppDelegate.swift in Sources */,
 				4BCC4F9D23E3431C00623DDA /* FavoritesListViewController.swift in Sources */,
 				4BF667C723E21BB8008C827C /* SceneDelegate.swift in Sources */,
