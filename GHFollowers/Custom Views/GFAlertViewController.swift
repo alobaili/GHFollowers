@@ -1,5 +1,5 @@
 //
-//  AlertViewController.swift
+//  GFAlertViewController.swift
 //  GHFollowers
 //
 //  Created by Abdulaziz AlObaili on 31/01/2020.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class AlertViewController: UIViewController {
+class GFAlertViewController: UIViewController {
     
     let containerView = UIView()
     let titleLabel = GFTitleLabel(textAlignment: .center, fontSize: 20)
