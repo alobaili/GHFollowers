@@ -13,6 +13,8 @@ class SearchViewController: UIViewController {
 	let logoImageView = UIImageView()
 	let usernameTextField = GFTextField()
 	let callToActionButton = GFButton(backgroundColor: .systemGreen, title: "Get Followers")
+    
+    var isUsernameEntered: Bool { return !usernameTextField.text!.isEmpty }
 	
     
     // MARK: View Lifecycle
@@ -39,6 +41,11 @@ class SearchViewController: UIViewController {
     }
     
     @objc func pushFollowersListViewController() {
+        guard isUsernameEntered else {
+            presentAlertOnMainThread(title: "Empty Username", message: "Please enter a username. We need to know who to look for 😀", buttonTitle: "OK")
+            return
+        }
+        
         view.endEditing(false)
         let followersListViewController = FollowersListViewController()
         followersListViewController.username = usernameTextField.text
@@ -46,7 +53,7 @@ class SearchViewController: UIViewController {
         navigationController?.pushViewController(followersListViewController, animated: true)
     }
     
-    // MARK: Subview Configuration
+    // MARK: Subviews Configuration
 	
 	func configureLogoImageView() {
 		view.addSubview(logoImageView)
