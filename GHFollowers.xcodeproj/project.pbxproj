@@ -34,6 +34,8 @@
 		4BF667CE23E21BB8008C827C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4BF667CD23E21BB8008C827C /* Assets.xcassets */; };
 		4BF667D123E21BB8008C827C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4BF667CF23E21BB8008C827C /* LaunchScreen.storyboard */; };
 		4BF737A123E73BF00058E80A /* GFItemInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BF737A023E73BF00058E80A /* GFItemInfoViewController.swift */; };
+		4BF737A323E73F5C0058E80A /* GFRepoItemViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BF737A223E73F5C0058E80A /* GFRepoItemViewController.swift */; };
+		4BF737A523E7413B0058E80A /* GFFollowerItemViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BF737A423E7413B0058E80A /* GFFollowerItemViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -66,6 +68,8 @@
 		4BF667D023E21BB8008C827C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		4BF667D223E21BB8008C827C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4BF737A023E73BF00058E80A /* GFItemInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GFItemInfoViewController.swift; sourceTree = "<group>"; };
+		4BF737A223E73F5C0058E80A /* GFRepoItemViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GFRepoItemViewController.swift; sourceTree = "<group>"; };
+		4BF737A423E7413B0058E80A /* GFFollowerItemViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GFFollowerItemViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -150,9 +154,9 @@
 		4B38C07A23E574440084E8DE /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				4BF737A623E741B00058E80A /* Item Info View Controllers */,
 				4BCC4FA823E43C6600623DDA /* GFAlertViewController.swift */,
 				4B38C08023E5ADF10084E8DE /* GFUserInfoHeaderViewController.swift */,
-				4BF737A023E73BF00058E80A /* GFItemInfoViewController.swift */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -242,6 +246,16 @@
 			path = GHFollowers;
 			sourceTree = "<group>";
 		};
+		4BF737A623E741B00058E80A /* Item Info View Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				4BF737A023E73BF00058E80A /* GFItemInfoViewController.swift */,
+				4BF737A223E73F5C0058E80A /* GFRepoItemViewController.swift */,
+				4BF737A423E7413B0058E80A /* GFFollowerItemViewController.swift */,
+			);
+			path = "Item Info View Controllers";
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -315,9 +329,11 @@
 				4B38C06723E45AD40084E8DE /* User.swift in Sources */,
 				4BCC4FA123E34E0400623DDA /* GFTextField.swift in Sources */,
 				4BCC4F9B23E342A300623DDA /* SearchViewController.swift in Sources */,
+				4BF737A523E7413B0058E80A /* GFFollowerItemViewController.swift in Sources */,
 				4BCC4F9F23E34B0000623DDA /* GFButton.swift in Sources */,
 				4BCC4FAB23E4447000623DDA /* UIViewController+Ext.swift in Sources */,
 				4B38C07523E499890084E8DE /* UIHelper.swift in Sources */,
+				4BF737A323E73F5C0058E80A /* GFRepoItemViewController.swift in Sources */,
 				4B38C08523E5B5970084E8DE /* Constants.swift in Sources */,
 				4B38C07323E474C10084E8DE /* GFAvatarImageView.swift in Sources */,
 				4BCC4FA923E43C6600623DDA /* GFAlertViewController.swift in Sources */,
