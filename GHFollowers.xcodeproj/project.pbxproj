@@ -33,6 +33,7 @@
 		4BF667C723E21BB8008C827C /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BF667C623E21BB8008C827C /* SceneDelegate.swift */; };
 		4BF667CE23E21BB8008C827C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4BF667CD23E21BB8008C827C /* Assets.xcassets */; };
 		4BF667D123E21BB8008C827C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4BF667CF23E21BB8008C827C /* LaunchScreen.storyboard */; };
+		4BF737A123E73BF00058E80A /* GFItemInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BF737A023E73BF00058E80A /* GFItemInfoViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -64,6 +65,7 @@
 		4BF667CD23E21BB8008C827C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		4BF667D023E21BB8008C827C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		4BF667D223E21BB8008C827C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		4BF737A023E73BF00058E80A /* GFItemInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GFItemInfoViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -150,6 +152,7 @@
 			children = (
 				4BCC4FA823E43C6600623DDA /* GFAlertViewController.swift */,
 				4B38C08023E5ADF10084E8DE /* GFUserInfoHeaderViewController.swift */,
+				4BF737A023E73BF00058E80A /* GFItemInfoViewController.swift */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -330,6 +333,7 @@
 				4B38C07D23E574AD0084E8DE /* GFEmptyStateView.swift in Sources */,
 				4B38C06B23E462330084E8DE /* NetworkManager.swift in Sources */,
 				4BF667C523E21BB8008C827C /* AppDelegate.swift in Sources */,
+				4BF737A123E73BF00058E80A /* GFItemInfoViewController.swift in Sources */,
 				4B38C07F23E582210084E8DE /* UserInfoViewController.swift in Sources */,
 				4BCC4F9D23E3431C00623DDA /* FavoritesListViewController.swift in Sources */,
 				4BF667C723E21BB8008C827C /* SceneDelegate.swift in Sources */,
