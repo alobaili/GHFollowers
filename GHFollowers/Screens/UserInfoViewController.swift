@@ -13,6 +13,7 @@ class UserInfoViewController: UIViewController {
     let headerView = UIView()
     let itemView1 = UIView()
     let itemView2 = UIView()
+    let dateLabel = GFBodyLabel(textAlignment: .center)
     var itemViews = [UIView]()
     
     var username: String!
@@ -42,6 +43,7 @@ class UserInfoViewController: UIViewController {
                         self.add(childViewController: GFUserInfoHeaderViewController(user: user), to: self.headerView)
                         self.add(childViewController: GFRepoItemViewController(user: user), to: self.itemView1)
                         self.add(childViewController: GFFollowerItemViewController(user: user), to: self.itemView2)
+                        self.dateLabel.text = "User since \(user.createdAt.convertToDisplayFormat())"
                 }
                 case .failure(let error):
                     self.presentAlertOnMainThread(title: "Something went wrong", message: error.rawValue, buttonTitle: "OK")
@@ -53,7 +55,7 @@ class UserInfoViewController: UIViewController {
         let padding: CGFloat = 20
         let itemHeight: CGFloat = 140
         
-        itemViews = [headerView, itemView1, itemView2]
+        itemViews = [headerView, itemView1, itemView2, dateLabel]
         
         for itemView in itemViews {
             view.addSubview(itemView)
@@ -81,6 +83,12 @@ class UserInfoViewController: UIViewController {
         NSLayoutConstraint.activate([
             itemView2.topAnchor.constraint(equalTo: itemView1.bottomAnchor, constant: padding),
             itemView2.heightAnchor.constraint(equalToConstant: itemHeight)
+        ])
+        
+        // dateLabel
+        NSLayoutConstraint.activate([
+            dateLabel.topAnchor.constraint(equalTo: itemView2.bottomAnchor, constant: padding),
+            dateLabel.heightAnchor.constraint(equalToConstant: 18)
         ])
     }
     
