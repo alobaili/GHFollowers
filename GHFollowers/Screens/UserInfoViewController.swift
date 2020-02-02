@@ -11,6 +11,7 @@ import UIKit
 protocol UserInfoViewControllerDelegate: class {
     
     func didTapGitHubProfile(for user: User)
+    
     func didTapGetFollowers(for user: User)
     
     
@@ -25,6 +26,7 @@ class UserInfoViewController: UIViewController {
     var itemViews = [UIView]()
     
     var username: String!
+    weak var delegate: FollowersListViewControllerDelegate!
 
     
     override func viewDidLoad() {
@@ -137,7 +139,12 @@ extension UserInfoViewController: UserInfoViewControllerDelegate {
     }
     
     func didTapGetFollowers(for user: User) {
-        //
+        guard user.followers != 0 else {
+            presentAlertOnMainThread(title: "No Followers", message: "This user has no folloers. What a shame 😞", buttonTitle: "So sad")
+            return
+        }
+        delegate.didRequestFollowers(for: user.login)
+        dismissViewController()
     }
     
     
