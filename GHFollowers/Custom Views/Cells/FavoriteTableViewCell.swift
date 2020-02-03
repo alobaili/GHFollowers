@@ -49,7 +49,7 @@ class FavoriteTableViewCell: UITableViewCell {
         NSLayoutConstraint.activate([
             usernameLabel.centerYAnchor.constraint(equalTo: centerYAnchor),
             usernameLabel.leadingAnchor.constraint(equalTo: avatarImageView.trailingAnchor, constant: 24),
-            usernameLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -padding),
+            usernameLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -padding - 40),
             usernameLabel.heightAnchor.constraint(equalToConstant: 40)
         ])
     }
