@@ -19,6 +19,11 @@ class GFTextField: UITextField {
 	required init?(coder: NSCoder) {
 		fatalError("init(coder:) has not been implemented")
 	}
+    
+    override func clearButtonRect(forBounds bounds: CGRect) -> CGRect {
+        let originalRect = super.clearButtonRect(forBounds: bounds)
+        return originalRect.offsetBy(dx: -8, dy: 0)
+    }
 	
 	private func configure() {
 		translatesAutoresizingMaskIntoConstraints = false
@@ -37,6 +42,8 @@ class GFTextField: UITextField {
 		backgroundColor = .tertiarySystemBackground
 		autocorrectionType = .no
         returnKeyType = .go
+        clearButtonMode = .whileEditing
+        autocapitalizationType = .none
 		placeholder = "Enter a username"
 	}
 
