@@ -20,6 +20,8 @@
 		4B38C08323E5AE690084E8DE /* GFSecondaryTitleLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B38C08223E5AE690084E8DE /* GFSecondaryTitleLabel.swift */; };
 		4B38C08523E5B5970084E8DE /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B38C08423E5B5970084E8DE /* Constants.swift */; };
 		4B38C08723E5C0700084E8DE /* GFItemInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B38C08623E5C0700084E8DE /* GFItemInfoView.swift */; };
+		4BC08F4623E9CCB40050C5BE /* GFAlertContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BC08F4523E9CCB40050C5BE /* GFAlertContainerView.swift */; };
+		4BC08F4823E9E7120050C5BE /* GFDataLoadingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BC08F4723E9E7120050C5BE /* GFDataLoadingViewController.swift */; };
 		4BC1167723E894D500934D18 /* FavoriteTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BC1167623E894D500934D18 /* FavoriteTableViewCell.swift */; };
 		4BC1167B23E8A2CD00934D18 /* GFTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BC1167A23E8A2CD00934D18 /* GFTabBarController.swift */; };
 		4BCC4F9B23E342A300623DDA /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BCC4F9A23E342A300623DDA /* SearchViewController.swift */; };
@@ -32,7 +34,6 @@
 		4BCC4FA923E43C6600623DDA /* GFAlertViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BCC4FA823E43C6600623DDA /* GFAlertViewController.swift */; };
 		4BCC4FAB23E4447000623DDA /* UIViewController+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BCC4FAA23E4447000623DDA /* UIViewController+Ext.swift */; };
 		4BE99AFE23E744E000850A9F /* Date+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BE99AFD23E744E000850A9F /* Date+Ext.swift */; };
-		4BE99B0023E744FB00850A9F /* String+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BE99AFF23E744FB00850A9F /* String+Ext.swift */; };
 		4BE99B0223E75AC800850A9F /* PersistenceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BE99B0123E75AC800850A9F /* PersistenceManager.swift */; };
 		4BF667C523E21BB8008C827C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BF667C423E21BB8008C827C /* AppDelegate.swift */; };
 		4BF667C723E21BB8008C827C /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BF667C623E21BB8008C827C /* SceneDelegate.swift */; };
@@ -57,6 +58,8 @@
 		4B38C08223E5AE690084E8DE /* GFSecondaryTitleLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GFSecondaryTitleLabel.swift; sourceTree = "<group>"; };
 		4B38C08423E5B5970084E8DE /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		4B38C08623E5C0700084E8DE /* GFItemInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GFItemInfoView.swift; sourceTree = "<group>"; };
+		4BC08F4523E9CCB40050C5BE /* GFAlertContainerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GFAlertContainerView.swift; sourceTree = "<group>"; };
+		4BC08F4723E9E7120050C5BE /* GFDataLoadingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GFDataLoadingViewController.swift; sourceTree = "<group>"; };
 		4BC1167623E894D500934D18 /* FavoriteTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteTableViewCell.swift; sourceTree = "<group>"; };
 		4BC1167A23E8A2CD00934D18 /* GFTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GFTabBarController.swift; sourceTree = "<group>"; };
 		4BCC4F9A23E342A300623DDA /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
@@ -69,7 +72,6 @@
 		4BCC4FA823E43C6600623DDA /* GFAlertViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GFAlertViewController.swift; sourceTree = "<group>"; };
 		4BCC4FAA23E4447000623DDA /* UIViewController+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Ext.swift"; sourceTree = "<group>"; };
 		4BE99AFD23E744E000850A9F /* Date+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Ext.swift"; sourceTree = "<group>"; };
-		4BE99AFF23E744FB00850A9F /* String+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Ext.swift"; sourceTree = "<group>"; };
 		4BE99B0123E75AC800850A9F /* PersistenceManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistenceManager.swift; sourceTree = "<group>"; };
 		4BF667C123E21BB8008C827C /* GHFollowers.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GHFollowers.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4BF667C423E21BB8008C827C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -135,6 +137,7 @@
 			children = (
 				4B38C07C23E574AD0084E8DE /* GFEmptyStateView.swift */,
 				4B38C08623E5C0700084E8DE /* GFItemInfoView.swift */,
+				4BC08F4523E9CCB40050C5BE /* GFAlertContainerView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -169,6 +172,7 @@
 				4BF737A623E741B00058E80A /* Item Info View Controllers */,
 				4BCC4FA823E43C6600623DDA /* GFAlertViewController.swift */,
 				4B38C08023E5ADF10084E8DE /* GFUserInfoHeaderViewController.swift */,
+				4BC08F4723E9E7120050C5BE /* GFDataLoadingViewController.swift */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -222,7 +226,6 @@
 			children = (
 				4BCC4FAA23E4447000623DDA /* UIViewController+Ext.swift */,
 				4BE99AFD23E744E000850A9F /* Date+Ext.swift */,
-				4BE99AFF23E744FB00850A9F /* String+Ext.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -352,7 +355,6 @@
 				4B38C06723E45AD40084E8DE /* User.swift in Sources */,
 				4BCC4FA123E34E0400623DDA /* GFTextField.swift in Sources */,
 				4BCC4F9B23E342A300623DDA /* SearchViewController.swift in Sources */,
-				4BE99B0023E744FB00850A9F /* String+Ext.swift in Sources */,
 				4BF737A523E7413B0058E80A /* GFFollowerItemViewController.swift in Sources */,
 				4BCC4F9F23E34B0000623DDA /* GFButton.swift in Sources */,
 				4BCC4FAB23E4447000623DDA /* UIViewController+Ext.swift in Sources */,
@@ -370,8 +372,10 @@
 				4B38C07123E473DC0084E8DE /* FollowerCollectionViewCell.swift in Sources */,
 				4BCC4FA723E43B3700623DDA /* GFBodyLabel.swift in Sources */,
 				4B38C06523E459BA0084E8DE /* Follower.swift in Sources */,
+				4BC08F4623E9CCB40050C5BE /* GFAlertContainerView.swift in Sources */,
 				4BCC4FA523E4246000623DDA /* GFTitleLabel.swift in Sources */,
 				4BE99AFE23E744E000850A9F /* Date+Ext.swift in Sources */,
+				4BC08F4823E9E7120050C5BE /* GFDataLoadingViewController.swift in Sources */,
 				4BE99B0223E75AC800850A9F /* PersistenceManager.swift in Sources */,
 				4B38C08323E5AE690084E8DE /* GFSecondaryTitleLabel.swift in Sources */,
 				4B38C07D23E574AD0084E8DE /* GFEmptyStateView.swift in Sources */,

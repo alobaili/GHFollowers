@@ -68,7 +68,7 @@ class UserInfoViewController: UIViewController {
         self.add(childViewController: repoItemViewController, to: self.itemView1)
         self.add(childViewController: followerItemViewController, to: self.itemView2)
         self.add(childViewController: GFUserInfoHeaderViewController(user: user), to: self.headerView)
-        self.dateLabel.text = "User since \(user.createdAt.convertToDisplayFormat())"
+        self.dateLabel.text = "User since \(user.createdAt.convertToMonthYearFormat())"
     }
     
     func layoutUI() {

@@ -15,7 +15,7 @@ protocol FollowersListViewControllerDelegate: class {
     
 }
 
-class FollowersListViewController: UIViewController {
+class FollowersListViewController: GFDataLoadingViewController {
     
     enum Section {
         case main
