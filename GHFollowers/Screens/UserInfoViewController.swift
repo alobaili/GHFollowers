@@ -10,9 +10,7 @@ import UIKit
 
 protocol UserInfoViewControllerDelegate: class {
     
-    func didTapGitHubProfile(for user: User)
-    
-    func didTapGetFollowers(for user: User)
+    func didRequestFollowers(for username: String)
     
     
 }
@@ -26,7 +24,7 @@ class UserInfoViewController: UIViewController {
     var itemViews = [UIView]()
     
     var username: String!
-    weak var delegate: FollowersListViewControllerDelegate!
+    weak var delegate: UserInfoViewControllerDelegate!
 
     
     override func viewDidLoad() {
@@ -59,11 +57,8 @@ class UserInfoViewController: UIViewController {
     }
     
     func configureUIElements(with user: User) {
-        let repoItemViewController = GFRepoItemViewController(user: user)
-        repoItemViewController.delegate = self
-        
-        let followerItemViewController = GFFollowerItemViewController(user: user)
-        followerItemViewController.delegate = self
+        let repoItemViewController = GFRepoItemViewController(user: user, delegate: self)
+        let followerItemViewController = GFFollowerItemViewController(user: user, delegate: self)
         
         self.add(childViewController: repoItemViewController, to: self.itemView1)
         self.add(childViewController: followerItemViewController, to: self.itemView2)
@@ -90,7 +85,7 @@ class UserInfoViewController: UIViewController {
         // headerView
         NSLayoutConstraint.activate([
             headerView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
-            headerView.heightAnchor.constraint(equalToConstant: 180)
+            headerView.heightAnchor.constraint(equalToConstant: 210)
         ])
         
         // itemView1
@@ -108,7 +103,7 @@ class UserInfoViewController: UIViewController {
         // dateLabel
         NSLayoutConstraint.activate([
             dateLabel.topAnchor.constraint(equalTo: itemView2.bottomAnchor, constant: padding),
-            dateLabel.heightAnchor.constraint(equalToConstant: 18)
+            dateLabel.heightAnchor.constraint(equalToConstant: 50)
         ])
     }
     
@@ -126,9 +121,9 @@ class UserInfoViewController: UIViewController {
 
 }
 
-// MARK: - UserInfoViewControllerDelegate
+// MARK: - GFRepoItemViewControllerDelegate
 
-extension UserInfoViewController: UserInfoViewControllerDelegate {
+extension UserInfoViewController: GFRepoItemViewControllerDelegate {
     
     func didTapGitHubProfile(for user: User) {
         guard let url = URL(string: user.htmlUrl) else {
@@ -137,6 +132,13 @@ extension UserInfoViewController: UserInfoViewControllerDelegate {
         }
         presentSafariViewController(with: url)
     }
+    
+    
+}
+
+// MARK: - GFFollowerItemViewControllerDelegate
+
+extension UserInfoViewController: GFFollowerItemViewControllerDelegate {
     
     func didTapGetFollowers(for user: User) {
         guard user.followers != 0 else {

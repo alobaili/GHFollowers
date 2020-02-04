@@ -8,8 +8,27 @@
 
 import UIKit
 
-class GFFollowerItemViewController: GFItemInfoViewController {
+protocol GFFollowerItemViewControllerDelegate: class {
+    
+    func didTapGetFollowers(for user: User)
+    
+    
+}
 
+class GFFollowerItemViewController: GFItemInfoViewController {
+    
+    weak var delegate: GFFollowerItemViewControllerDelegate!
+    
+    init(user: User, delegate: GFFollowerItemViewControllerDelegate) {
+        super.init(user: user)
+        
+        self.delegate = delegate
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
