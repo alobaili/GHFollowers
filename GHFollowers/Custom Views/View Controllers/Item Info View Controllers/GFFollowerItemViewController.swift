@@ -19,6 +19,7 @@ class GFFollowerItemViewController: GFItemInfoViewController {
     
     weak var delegate: GFFollowerItemViewControllerDelegate!
     
+    
     init(user: User, delegate: GFFollowerItemViewControllerDelegate) {
         super.init(user: user)
         

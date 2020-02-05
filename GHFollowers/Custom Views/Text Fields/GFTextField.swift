@@ -46,5 +46,6 @@ class GFTextField: UITextField {
         autocapitalizationType = .none
 		placeholder = "Enter a username"
 	}
+    
 
 }
