@@ -12,7 +12,11 @@ class SearchViewController: UIViewController {
 	
 	let logoImageView = UIImageView()
 	let usernameTextField = GFTextField()
-	let callToActionButton = GFButton(backgroundColor: .systemGreen, title: "Get Followers")
+	let callToActionButton = GFButton(
+        backgroundColor: .systemGreen,
+        title: NSLocalizedString("Get Followers", comment: "Button: Go to followers list of a GitHub user.")
+    )
+    let changeLanguageButton = UIButton()
     
     var isUsernameEntered: Bool { return !usernameTextField.text!.isEmpty }
 	
@@ -27,6 +31,7 @@ class SearchViewController: UIViewController {
         configureUsernameTextField()
         configureCallToActionButton()
         createDismissKeyboardTapGesture()
+        configureChangeLanguageButton()
     }
 	
 	override func viewWillAppear(_ animated: Bool) {
@@ -43,7 +48,11 @@ class SearchViewController: UIViewController {
     
     @objc func pushFollowersListViewController() {
         guard isUsernameEntered else {
-            presentAlertOnMainThread(title: "Empty Username", message: "Please enter a username. We need to know who to look for 😀", buttonTitle: "OK")
+            presentAlertOnMainThread(
+                title: NSLocalizedString("Empty Username", comment: "Error message title."),
+                message: NSLocalizedString("Empty Username Body", comment: "Please enter a username. We need to know who to look for 😀"),
+                buttonTitle: NSLocalizedString("OK", comment: "Button: OK.")
+            )
             return
         }
         
@@ -91,6 +100,25 @@ class SearchViewController: UIViewController {
             callToActionButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -50),
             callToActionButton.heightAnchor.constraint(equalToConstant: 50)
         ])
+    }
+    
+    func configureChangeLanguageButton() {
+        view.addSubview(changeLanguageButton)
+        changeLanguageButton.translatesAutoresizingMaskIntoConstraints = false
+        changeLanguageButton.addTarget(self, action: #selector(changeLanguage), for: .touchUpInside)
+        changeLanguageButton.setImage(UIImage(systemName: "globe"), for: .normal)
+        changeLanguageButton.tintColor = .systemGreen
+        
+        NSLayoutConstraint.activate([
+            changeLanguageButton.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 20),
+            changeLanguageButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
+            changeLanguageButton.widthAnchor.constraint(equalToConstant: 50),
+            changeLanguageButton.heightAnchor.constraint(equalToConstant: 50)
+        ])
+    }
+    
+    @objc func changeLanguage() {
+        UIApplication.shared.open(URL(string: UIApplication.openSettingsURLString)!)
     }
 	
 

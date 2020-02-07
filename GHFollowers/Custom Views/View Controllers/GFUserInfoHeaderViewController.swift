@@ -41,8 +41,8 @@ class GFUserInfoHeaderViewController: UIViewController {
         avatarImageView.downloadImage(fromURL: user.avatarUrl)
         usernameLabel.text = user.login
         nameLabel.text = user.name ?? ""
-        locationLabel.text = user.location ?? "No Location"
-        bioLabel.text = user.bio ?? "No bio available"
+        locationLabel.text = user.location ?? NSLocalizedString("No Location", comment: "Default value if the user didn't add a location in his profile.")
+        bioLabel.text = user.bio ?? NSLocalizedString("No bio available", comment: "Default value if the user didn't add a bio in his profile.")
         bioLabel.numberOfLines = 3
         
         locationImageView.image = SFSymbols.location

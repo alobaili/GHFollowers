@@ -73,7 +73,7 @@ class FollowersListViewController: GFDataLoadingViewController {
     
     func configureSearchController() {
         searchController.searchResultsUpdater = self
-        searchController.searchBar.placeholder = "Search for a username"
+        searchController.searchBar.placeholder = NSLocalizedString("Search for a username", comment: "Placeholder for search bar.")
         searchController.obscuresBackgroundDuringPresentation = false
         searchController.searchBar.isHidden = true
         navigationItem.searchController = searchController
@@ -91,7 +91,11 @@ class FollowersListViewController: GFDataLoadingViewController {
                 case .success(let followers):
                     self.updateUI(with: followers)
                 case .failure(let error):
-                    self.presentAlertOnMainThread(title: "Bad stuff happened", message: error.rawValue, buttonTitle: "OK")
+                    self.presentAlertOnMainThread(
+                        title: NSLocalizedString("Bad stuff happened", comment: "Error message title."),
+                        message: error.localizedDescription,
+                        buttonTitle: NSLocalizedString("OK", comment: "Button: OK.")
+                    )
             }
             
             self.isLoadingMoreFollowers = false
@@ -104,7 +108,7 @@ class FollowersListViewController: GFDataLoadingViewController {
         }
         self.followers.append(contentsOf: followers)
         if self.followers.isEmpty {
-            let message = "This user doesn't have any followers. Go follow them 😀"
+            let message = NSLocalizedString("No Followers Body", comment: "This user doesn't have any followers. Go follow them 😀")
             DispatchQueue.main.async { self.showEmptyStateView(withMessage: message, in: self.view) }
             return
         }
@@ -140,7 +144,11 @@ class FollowersListViewController: GFDataLoadingViewController {
                 case .success(let user):
                     self.addUserToFavorites(user: user)
                 case .failure(let error):
-                    self.presentAlertOnMainThread(title: "Something went wrong", message: error.rawValue, buttonTitle: "OK")
+                    self.presentAlertOnMainThread(
+                        title: NSLocalizedString("Something went wrong", comment: "Error message title."),
+                        message: error.localizedDescription,
+                        buttonTitle: NSLocalizedString("OK", comment: "Button: OK.")
+                    )
             }
         }
     }
@@ -151,11 +159,19 @@ class FollowersListViewController: GFDataLoadingViewController {
             guard let self = self else { return }
             
             guard let error = error else {
-                self.presentAlertOnMainThread(title: "Success!", message: "You have sucessfully favorited this user 🎉", buttonTitle: "Hooray!")
+                self.presentAlertOnMainThread(
+                    title: NSLocalizedString("Success!", comment: "Success message title."),
+                    message: NSLocalizedString("Success! Body", comment: "You have sucessfully favorited this user 🎉"),
+                    buttonTitle: NSLocalizedString("Hooray!", comment: "Celebration button title for success message.")
+                )
                 return
             }
             
-            self.presentAlertOnMainThread(title: "Something went wrong", message: error.rawValue, buttonTitle: "OK")
+            self.presentAlertOnMainThread(
+                title: NSLocalizedString("Something went wrong", comment: "Error message title."),
+                message: error.localizedDescription,
+                buttonTitle: NSLocalizedString("OK", comment: "Button: OK.")
+            )
         }
     }
     

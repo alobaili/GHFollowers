@@ -68,7 +68,11 @@ class UserInfoViewController: UIViewController {
                         self.configureUIElements(with: user)
                 }
                 case .failure(let error):
-                    self.presentAlertOnMainThread(title: "Something went wrong", message: error.rawValue, buttonTitle: "OK")
+                    self.presentAlertOnMainThread(
+                        title: NSLocalizedString("Something went wrong", comment: "Error message title."),
+                        message: error.localizedDescription,
+                        buttonTitle: NSLocalizedString("OK", comment: "Button: OK.")
+                    )
             }
         }
     }
@@ -80,7 +84,9 @@ class UserInfoViewController: UIViewController {
         self.add(childViewController: repoItemViewController, to: self.itemView1)
         self.add(childViewController: followerItemViewController, to: self.itemView2)
         self.add(childViewController: GFUserInfoHeaderViewController(user: user), to: self.headerView)
-        self.dateLabel.text = "User since \(user.createdAt.convertToMonthYearFormat())"
+        self.dateLabel.text = NSLocalizedString("User since", comment: "Example: User since Oct 2017")
+                                + " "
+                                + "\(user.createdAt.convertToMonthYearFormat())"
     }
     
     func layoutUI() {
@@ -144,7 +150,11 @@ extension UserInfoViewController: GFRepoItemViewControllerDelegate {
     
     func didTapGitHubProfile(for user: User) {
         guard let url = URL(string: user.htmlUrl) else {
-            presentAlertOnMainThread(title: "Invalid URL", message: "The URL attached to this user is invalid.", buttonTitle: "OK")
+            presentAlertOnMainThread(
+                title: NSLocalizedString("Invalid URL", comment: "Error message title."),
+                message: NSLocalizedString("Invalid URL Body", comment: "The URL attached to this user is invalid."),
+                buttonTitle: NSLocalizedString("OK", comment: "Button: OK.")
+            )
             return
         }
         presentSafariViewController(with: url)
@@ -159,7 +169,11 @@ extension UserInfoViewController: GFFollowerItemViewControllerDelegate {
     
     func didTapGetFollowers(for user: User) {
         guard user.followers != 0 else {
-            presentAlertOnMainThread(title: "No Followers", message: "This user has no folloers. What a shame 😞", buttonTitle: "So sad")
+            presentAlertOnMainThread(
+                title: NSLocalizedString("No Followers", comment: "Error message title."),
+                message: NSLocalizedString("No Followers Body", comment: "This user has no folloers. What a shame 😞"),
+                buttonTitle: NSLocalizedString("So sad", comment: "Button for error message.")
+            )
             return
         }
         delegate.didRequestFollowers(for: user.login)

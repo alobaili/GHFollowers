@@ -35,6 +35,8 @@
 		4BCC4FA723E43B3700623DDA /* GFBodyLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BCC4FA623E43B3700623DDA /* GFBodyLabel.swift */; };
 		4BCC4FA923E43C6600623DDA /* GFAlertViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BCC4FA823E43C6600623DDA /* GFAlertViewController.swift */; };
 		4BCC4FAB23E4447000623DDA /* UIViewController+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BCC4FAA23E4447000623DDA /* UIViewController+Ext.swift */; };
+		4BCCB96723ED9549006C7358 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 4BCCB96923ED9549006C7358 /* Localizable.strings */; };
+		4BCCB96C23EDAC30006C7358 /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 4BCCB96B23EDAC30006C7358 /* Settings.bundle */; };
 		4BE99AFE23E744E000850A9F /* Date+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BE99AFD23E744E000850A9F /* Date+Ext.swift */; };
 		4BE99B0223E75AC800850A9F /* PersistenceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BE99B0123E75AC800850A9F /* PersistenceManager.swift */; };
 		4BF667C523E21BB8008C827C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BF667C423E21BB8008C827C /* AppDelegate.swift */; };
@@ -75,6 +77,10 @@
 		4BCC4FA623E43B3700623DDA /* GFBodyLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GFBodyLabel.swift; sourceTree = "<group>"; };
 		4BCC4FA823E43C6600623DDA /* GFAlertViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GFAlertViewController.swift; sourceTree = "<group>"; };
 		4BCC4FAA23E4447000623DDA /* UIViewController+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Ext.swift"; sourceTree = "<group>"; };
+		4BCCB96423ED9071006C7358 /* ar */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ar; path = ar.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
+		4BCCB96823ED9549006C7358 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		4BCCB96A23ED954C006C7358 /* ar */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ar; path = ar.lproj/Localizable.strings; sourceTree = "<group>"; };
+		4BCCB96B23EDAC30006C7358 /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = SOURCE_ROOT; };
 		4BE99AFD23E744E000850A9F /* Date+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Ext.swift"; sourceTree = "<group>"; };
 		4BE99B0123E75AC800850A9F /* PersistenceManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistenceManager.swift; sourceTree = "<group>"; };
 		4BF667C123E21BB8008C827C /* GHFollowers.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GHFollowers.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -239,6 +245,7 @@
 		4BCC4FAF23E4536700623DDA /* Support */ = {
 			isa = PBXGroup;
 			children = (
+				4BCCB96923ED9549006C7358 /* Localizable.strings */,
 				4BF667C423E21BB8008C827C /* AppDelegate.swift */,
 				4BF667C623E21BB8008C827C /* SceneDelegate.swift */,
 				4BF667CD23E21BB8008C827C /* Assets.xcassets */,
@@ -267,6 +274,7 @@
 		4BF667C323E21BB8008C827C /* GHFollowers */ = {
 			isa = PBXGroup;
 			children = (
+				4BCCB96B23EDAC30006C7358 /* Settings.bundle */,
 				4B38C06C23E46CB50084E8DE /* Utilities */,
 				4B38C06823E4620D0084E8DE /* Managers */,
 				4B38C06323E4599F0084E8DE /* Models */,
@@ -330,6 +338,7 @@
 			knownRegions = (
 				en,
 				Base,
+				ar,
 			);
 			mainGroup = 4BF667B823E21BB8008C827C;
 			productRefGroup = 4BF667C223E21BB8008C827C /* Products */;
@@ -346,7 +355,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4BCCB96C23EDAC30006C7358 /* Settings.bundle in Resources */,
 				4BF667D123E21BB8008C827C /* LaunchScreen.storyboard in Resources */,
+				4BCCB96723ED9549006C7358 /* Localizable.strings in Resources */,
 				4BF667CE23E21BB8008C827C /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -399,10 +410,21 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
+		4BCCB96923ED9549006C7358 /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				4BCCB96823ED9549006C7358 /* en */,
+				4BCCB96A23ED954C006C7358 /* ar */,
+			);
+			name = Localizable.strings;
+			path = GHFollowers;
+			sourceTree = SOURCE_ROOT;
+		};
 		4BF667CF23E21BB8008C827C /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
 				4BF667D023E21BB8008C827C /* Base */,
+				4BCCB96423ED9071006C7358 /* ar */,
 			);
 			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
@@ -414,6 +436,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
@@ -474,6 +497,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";

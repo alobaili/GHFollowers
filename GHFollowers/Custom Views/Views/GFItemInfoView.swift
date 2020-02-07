@@ -65,16 +65,16 @@ class GFItemInfoView: UIView {
         switch itemInfoType {
             case .repos:
                 symbolImageView.image = SFSymbols.repos
-                titleLabel.text = "Public Repos"
+                titleLabel.text = NSLocalizedString("Public Repos", comment: "Title for the number of public repos.")
             case .gists:
                 symbolImageView.image = SFSymbols.gists
-                titleLabel.text = "Public Gists"
+                titleLabel.text = NSLocalizedString("Public Gists", comment: "Title for the number of public gists.")
             case .followers:
                 symbolImageView.image = SFSymbols.followers
-                titleLabel.text = "Followers"
+                titleLabel.text = NSLocalizedString("Followers", comment: "Title for the number of followers.")
             case .following:
                 symbolImageView.image = SFSymbols.following
-                titleLabel.text = "Following"
+                titleLabel.text = NSLocalizedString("Following", comment: "Title for the number of following.")
         }
         
         countLabel.text = "\(count)"

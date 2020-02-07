@@ -29,7 +29,7 @@ class FavoritesListViewController: GFDataLoadingViewController {
     
     func configureViewController() {
         view.backgroundColor = .systemBackground
-        title = "Favorites"
+        title = NSLocalizedString("Favorites", comment: "Faforites screen title (appears in the navigation bar).")
         navigationController?.navigationBar.prefersLargeTitles = true
     }
     
@@ -53,14 +53,24 @@ class FavoritesListViewController: GFDataLoadingViewController {
                 case .success(let favorites):
                     self.updateUI(with: favorites)
                 case .failure(let error):
-                    self.presentAlertOnMainThread(title: "Something went wrong", message: error.rawValue, buttonTitle: "OK")
+                    self.presentAlertOnMainThread(
+                        title: NSLocalizedString("Something went wrong", comment: "Error message title."),
+                        message: error.localizedDescription,
+                        buttonTitle: NSLocalizedString("OK", comment: "Button: OK.")
+                    )
             }
         }
     }
     
     func updateUI(with favorites: [Follower]) {
         if favorites.isEmpty {
-            self.showEmptyStateView(withMessage: "No Favorites?\nAdd one from the followers screen.", in: self.view)
+            self.showEmptyStateView(
+                withMessage:
+                    NSLocalizedString("No Favorites", comment: "Title for no favorites message.")
+                        + "\n"
+                        + NSLocalizedString("No Favorites Body", comment: "Something like: Add one from the followers screen."),
+                in: self.view
+            )
         } else {
             self.favorites = favorites
             DispatchQueue.main.async {
@@ -108,7 +118,11 @@ extension FavoritesListViewController: UITableViewDataSource, UITableViewDelegat
                 return
             }
             
-            self.presentAlertOnMainThread(title: "Unable to remove", message: error.rawValue, buttonTitle: "OK")
+            self.presentAlertOnMainThread(
+                title: NSLocalizedString("Unable to remove", comment: "Error message title for removing favorite."),
+                message: error.localizedDescription,
+                buttonTitle: NSLocalizedString("OK", comment: "Button: OK.")
+            )
         }
     }
     

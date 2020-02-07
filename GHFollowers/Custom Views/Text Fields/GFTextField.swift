@@ -22,7 +22,11 @@ class GFTextField: UITextField {
     
     override func clearButtonRect(forBounds bounds: CGRect) -> CGRect {
         let originalRect = super.clearButtonRect(forBounds: bounds)
-        return originalRect.offsetBy(dx: -8, dy: 0)
+        if UIView.userInterfaceLayoutDirection(for: self.semanticContentAttribute) == .rightToLeft {
+            return originalRect.offsetBy(dx: 8, dy: 0)
+        } else {
+            return originalRect.offsetBy(dx: -8, dy: 0)
+        }
     }
 	
 	private func configure() {
@@ -44,7 +48,7 @@ class GFTextField: UITextField {
         returnKeyType = .go
         clearButtonMode = .whileEditing
         autocapitalizationType = .none
-		placeholder = "Enter a username"
+		placeholder = NSLocalizedString("Enter a username", comment: "Username text field placeholder")
 	}
     
 

@@ -39,7 +39,10 @@ class GFFollowerItemViewController: GFItemInfoViewController {
     private func configureItems() {
         itemInfoView1.set(itemInfoType: .followers, withCount: user.followers)
         itemInfoView2.set(itemInfoType: .following, withCount: user.following)
-        actionButton.set(backgroundColor: .systemGreen, title: "Get Followers")
+        actionButton.set(
+            backgroundColor: .systemGreen,
+            title: NSLocalizedString("Get Followers", comment: "Button: Go to followers list of a GitHub user.")
+        )
     }
     
     override func actionButtonTapped() {

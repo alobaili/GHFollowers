@@ -13,7 +13,10 @@ class GFAlertViewController: UIViewController {
     let containerView = GFAlertContainerView()
     let titleLabel = GFTitleLabel(textAlignment: .center, fontSize: 20)
     let messageLabel = GFBodyLabel(textAlignment: .center)
-    let actionButton = GFButton(backgroundColor: .link, title: "OK")
+    let actionButton = GFButton(
+        backgroundColor: .link,
+        title: NSLocalizedString("OK", comment: "Button: OK.")
+    )
     
     var alertTitle: String?
     var message: String?
@@ -62,7 +65,7 @@ class GFAlertViewController: UIViewController {
     
     private func configureTitleLabel() {
         containerView.addSubview(titleLabel)
-        titleLabel.text = alertTitle ?? "Something went wrong"
+        titleLabel.text = alertTitle ?? NSLocalizedString("Something went wrong", comment: "Error message title.")
         
         NSLayoutConstraint.activate([
             titleLabel.topAnchor.constraint(equalTo: containerView.topAnchor, constant: padding),
@@ -74,7 +77,10 @@ class GFAlertViewController: UIViewController {
     
     private func configureActionButton() {
         containerView.addSubview(actionButton)
-        actionButton.setTitle(buttonTitle ?? "OK", for: .normal)
+        actionButton.setTitle(
+            buttonTitle ?? NSLocalizedString("OK", comment: "Button: OK."),
+            for: .normal
+        )
         actionButton.addTarget(self, action: #selector(dismissViewController), for: .touchUpInside)
         
         NSLayoutConstraint.activate([
@@ -87,7 +93,7 @@ class GFAlertViewController: UIViewController {
     
     private func configureMessageLabel() {
         containerView.addSubview(messageLabel)
-        messageLabel.text = message ?? "Unable to complete request."
+        messageLabel.text = message ?? NSLocalizedString("Unable to complete request.", comment: "Error message body.")
         messageLabel.numberOfLines = 4
         
         NSLayoutConstraint.activate([

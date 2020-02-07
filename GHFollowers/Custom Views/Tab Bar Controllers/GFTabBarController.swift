@@ -19,7 +19,7 @@ class GFTabBarController: UITabBarController {
     
     func createSearchNavigationController() -> UINavigationController {
         let searchViewController = SearchViewController()
-        searchViewController.title = "Search"
+        searchViewController.title = NSLocalizedString("Search", comment: "Title of the search tab.")
         searchViewController.tabBarItem = UITabBarItem(tabBarSystemItem: .search, tag: 0)
         
         return UINavigationController(rootViewController: searchViewController)
@@ -27,7 +27,7 @@ class GFTabBarController: UITabBarController {
     
     func createFavoritesNavigationController() -> UINavigationController {
         let favoritesListViewController = FavoritesListViewController()
-        favoritesListViewController.title = "Favorites"
+        favoritesListViewController.title = NSLocalizedString("Favorites", comment: "Title of the favorites tab.")
         favoritesListViewController.tabBarItem = UITabBarItem(tabBarSystemItem: .favorites, tag: 1)
         
         return UINavigationController(rootViewController: favoritesListViewController)
