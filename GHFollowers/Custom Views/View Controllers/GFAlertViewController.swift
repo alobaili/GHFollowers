@@ -14,8 +14,9 @@ class GFAlertViewController: UIViewController {
     let titleLabel = GFTitleLabel(textAlignment: .center, fontSize: 20)
     let messageLabel = GFBodyLabel(textAlignment: .center)
     let actionButton = GFButton(
-        backgroundColor: .link,
-        title: NSLocalizedString("OK", comment: "Button: OK.")
+        color: .link,
+        title: NSLocalizedString("OK", comment: "Button: OK."),
+        systemImageName: "checkmark.circle"
     )
     
     var alertTitle: String?

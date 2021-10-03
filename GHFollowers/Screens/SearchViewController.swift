@@ -13,8 +13,9 @@ class SearchViewController: UIViewController {
 	let logoImageView = UIImageView()
 	let usernameTextField = GFTextField()
 	let callToActionButton = GFButton(
-        backgroundColor: .systemGreen,
-        title: NSLocalizedString("Get Followers", comment: "Button: Go to followers list of a GitHub user.")
+        color: .systemGreen,
+        title: NSLocalizedString("Get Followers", comment: "Button: Go to followers list of a GitHub user."),
+        systemImageName: "person.3"
     )
     let changeLanguageButton = UIButton()
     

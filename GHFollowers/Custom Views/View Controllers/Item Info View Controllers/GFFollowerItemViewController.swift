@@ -37,8 +37,9 @@ class GFFollowerItemViewController: GFItemInfoViewController {
         itemInfoView1.set(itemInfoType: .followers, withCount: user.followers)
         itemInfoView2.set(itemInfoType: .following, withCount: user.following)
         actionButton.set(
-            backgroundColor: .systemGreen,
-            title: NSLocalizedString("Get Followers", comment: "Button: Go to followers list of a GitHub user.")
+            color: .systemGreen,
+            title: NSLocalizedString("Get Followers", comment: "Button: Go to followers list of a GitHub user."),
+            systemImageName: "person.3"
         )
     }
     
