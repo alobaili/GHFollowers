@@ -8,11 +8,8 @@
 
 import UIKit
 
-protocol GFRepoItemViewControllerDelegate: class {
-    
+protocol GFRepoItemViewControllerDelegate: AnyObject {
     func didTapGitHubProfile(for user: User)
-    
-    
 }
 
 class GFRepoItemViewController: GFItemInfoViewController {
