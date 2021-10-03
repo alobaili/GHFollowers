@@ -56,20 +56,18 @@ class UserInfoViewController: UIViewController {
     }
     
     func getUserInfo() {
-        NetworkManager.shared.getUserInfo(for: username) { [weak self] (result) in
-            guard let self = self else { return }
-            
-            switch result {
-                case .success(let user):
-                    DispatchQueue.main.async {
-                        self.configureUIElements(with: user)
-                }
-                case .failure(let error):
-                    self.presentAlertOnMainThread(
-                        title: NSLocalizedString("Something went wrong", comment: "Error message title."),
-                        message: error.localizedDescription,
-                        buttonTitle: NSLocalizedString("OK", comment: "Button: OK.")
-                    )
+        Task {
+            do {
+                let user = try await NetworkManager.shared.getUserInfo(for: username)
+                configureUIElements(with: user)
+            } catch let error as GFError {
+                presentAlert(
+                    title: NSLocalizedString("Something went wrong", comment: "Error message title."),
+                    message: error.localizedDescription,
+                    buttonTitle: NSLocalizedString("OK", comment: "Button: OK.")
+                )
+            } catch {
+                presentDefaultAlert()
             }
         }
     }
@@ -147,7 +145,7 @@ extension UserInfoViewController: GFRepoItemViewControllerDelegate {
     
     func didTapGitHubProfile(for user: User) {
         guard let url = URL(string: user.htmlUrl) else {
-            presentAlertOnMainThread(
+            presentAlert(
                 title: NSLocalizedString("Invalid URL", comment: "Error message title."),
                 message: NSLocalizedString("Invalid URL Body", comment: "The URL attached to this user is invalid."),
                 buttonTitle: NSLocalizedString("OK", comment: "Button: OK.")
@@ -166,7 +164,7 @@ extension UserInfoViewController: GFFollowerItemViewControllerDelegate {
     
     func didTapGetFollowers(for user: User) {
         guard user.followers != 0 else {
-            presentAlertOnMainThread(
+            presentAlert(
                 title: NSLocalizedString("No Followers", comment: "Error message title."),
                 message: NSLocalizedString("No Followers Body", comment: "This user has no folloers. What a shame 😞"),
                 buttonTitle: NSLocalizedString("So sad", comment: "Button for error message.")

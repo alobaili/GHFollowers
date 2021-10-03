@@ -53,11 +53,13 @@ class FavoritesListViewController: GFDataLoadingViewController {
                 case .success(let favorites):
                     self.updateUI(with: favorites)
                 case .failure(let error):
-                    self.presentAlertOnMainThread(
-                        title: NSLocalizedString("Something went wrong", comment: "Error message title."),
-                        message: error.localizedDescription,
-                        buttonTitle: NSLocalizedString("OK", comment: "Button: OK.")
-                    )
+                    DispatchQueue.main.async {
+                        self.presentAlert(
+                            title: NSLocalizedString("Something went wrong", comment: "Error message title."),
+                            message: error.localizedDescription,
+                            buttonTitle: NSLocalizedString("OK", comment: "Button: OK.")
+                        )
+                    }
             }
         }
     }
@@ -117,12 +119,14 @@ extension FavoritesListViewController: UITableViewDataSource, UITableViewDelegat
                 tableView.deleteRows(at: [indexPath], with: .automatic)
                 return
             }
-            
-            self.presentAlertOnMainThread(
-                title: NSLocalizedString("Unable to remove", comment: "Error message title for removing favorite."),
-                message: error.localizedDescription,
-                buttonTitle: NSLocalizedString("OK", comment: "Button: OK.")
-            )
+
+            DispatchQueue.main.async {
+                self.presentAlert(
+                    title: NSLocalizedString("Unable to remove", comment: "Error message title for removing favorite."),
+                    message: error.localizedDescription,
+                    buttonTitle: NSLocalizedString("OK", comment: "Button: OK.")
+                )
+            }
         }
     }
     

@@ -10,14 +10,30 @@ import UIKit
 import SafariServices
 
 extension UIViewController {
-    
-    func presentAlertOnMainThread(title: String, message: String, buttonTitle: String) {
-        DispatchQueue.main.async {
-            let alertViewController = GFAlertViewController(alertTitle: title, message: message, buttonTitle: buttonTitle)
-            alertViewController.modalPresentationStyle = .overFullScreen
-            alertViewController.modalTransitionStyle = .crossDissolve
-            self.present(alertViewController, animated: true)
-        }
+    func presentAlert(title: String, message: String, buttonTitle: String) {
+        let alertViewController = GFAlertViewController(alertTitle: title, message: message, buttonTitle: buttonTitle)
+        alertViewController.modalPresentationStyle = .overFullScreen
+        alertViewController.modalTransitionStyle = .crossDissolve
+        present(alertViewController, animated: true)
+    }
+
+    func presentDefaultAlert() {
+        let title = NSLocalizedString("Something went wrong", comment: "default error title")
+        let message = NSLocalizedString(
+            "We were unable to complete your task at this time; Please try again.",
+            comment: "default error message"
+        )
+        let buttonTitle = NSLocalizedString("OK", comment: "default error button title")
+
+        let alertViewController = GFAlertViewController(
+            alertTitle: title,
+            message: message,
+            buttonTitle: buttonTitle
+        )
+        
+        alertViewController.modalPresentationStyle = .overFullScreen
+        alertViewController.modalTransitionStyle = .crossDissolve
+        present(alertViewController, animated: true)
     }
     
     func presentSafariViewController(with url: URL) {
@@ -25,6 +41,4 @@ extension UIViewController {
         safariViewController.preferredControlTintColor = .systemGreen
         present(safariViewController, animated: true)
     }
-    
-    
 }

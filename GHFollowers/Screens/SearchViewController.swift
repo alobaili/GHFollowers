@@ -49,7 +49,7 @@ class SearchViewController: UIViewController {
     
     @objc func pushFollowersListViewController() {
         guard isUsernameEntered else {
-            presentAlertOnMainThread(
+            presentAlert(
                 title: NSLocalizedString("Empty Username", comment: "Error message title."),
                 message: NSLocalizedString("Empty Username Body", comment: "Please enter a username. We need to know who to look for 😀"),
                 buttonTitle: NSLocalizedString("OK", comment: "Button: OK.")

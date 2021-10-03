@@ -82,23 +82,23 @@ class FollowersListViewController: GFDataLoadingViewController {
     func getFollowers(username: String, page: Int) {
         showLoadingView()
         isLoadingMoreFollowers = true
-        NetworkManager.shared.getFollowers(for: username, page: page) { [weak self] (result) in
-            guard let self = self else { return }
-            
-            self.dismissLoadingView()
-            
-            switch result {
-                case .success(let followers):
-                    self.updateUI(with: followers)
-                case .failure(let error):
-                    self.presentAlertOnMainThread(
-                        title: NSLocalizedString("Bad stuff happened", comment: "Error message title."),
-                        message: error.localizedDescription,
-                        buttonTitle: NSLocalizedString("OK", comment: "Button: OK.")
-                    )
+
+        Task {
+            do {
+                let followers = try await NetworkManager.shared.getFollowers(for: username, page: page)
+                updateUI(with: followers)
+            } catch let error as GFError {
+                presentAlert(
+                    title: NSLocalizedString("Bad stuff happened", comment: "Error message title."),
+                    message: error.localizedDescription,
+                    buttonTitle: NSLocalizedString("OK", comment: "Button: OK.")
+                )
+            } catch {
+                presentDefaultAlert()
             }
-            
-            self.isLoadingMoreFollowers = false
+
+            dismissLoadingView()
+            isLoadingMoreFollowers = false
         }
     }
     
@@ -135,43 +135,49 @@ class FollowersListViewController: GFDataLoadingViewController {
     
     @objc func addButtonTapped() {
         showLoadingView()
-        NetworkManager.shared.getUserInfo(for: username) { [weak self] (result) in
-            guard let self = self else { return }
-            
-            self.dismissLoadingView()
-            
-            switch result {
-                case .success(let user):
-                    self.addUserToFavorites(user: user)
-                case .failure(let error):
-                    self.presentAlertOnMainThread(
-                        title: NSLocalizedString("Something went wrong", comment: "Error message title."),
-                        message: error.localizedDescription,
-                        buttonTitle: NSLocalizedString("OK", comment: "Button: OK.")
-                    )
+
+        Task {
+            do {
+                let user = try await NetworkManager.shared.getUserInfo(for: username)
+                addUserToFavorites(user: user)
+            } catch let error as GFError {
+                presentAlert(
+                    title: NSLocalizedString("Something went wrong", comment: "Error message title."),
+                    message: error.localizedDescription,
+                    buttonTitle: NSLocalizedString("OK", comment: "Button: OK.")
+                )
+            } catch {
+                presentDefaultAlert()
             }
+
+            dismissLoadingView()
         }
     }
     
     func addUserToFavorites(user: User) {
         let favorite = Follower(login: user.login, avatarUrl: user.avatarUrl)
+
         PersistenceManager.updateFavorite(favorite, actionType: .add) { [weak self] (error) in
             guard let self = self else { return }
             
             guard let error = error else {
-                self.presentAlertOnMainThread(
-                    title: NSLocalizedString("Success!", comment: "Success message title."),
-                    message: NSLocalizedString("Success! Body", comment: "You have sucessfully favorited this user 🎉"),
-                    buttonTitle: NSLocalizedString("Hooray!", comment: "Celebration button title for success message.")
-                )
+                DispatchQueue.main.async {
+                    self.presentAlert(
+                        title: NSLocalizedString("Success!", comment: "Success message title."),
+                        message: NSLocalizedString("Success! Body", comment: "You have sucessfully favorited this user 🎉"),
+                        buttonTitle: NSLocalizedString("Hooray!", comment: "Celebration button title for success message.")
+                    )
+                }
                 return
             }
-            
-            self.presentAlertOnMainThread(
-                title: NSLocalizedString("Something went wrong", comment: "Error message title."),
-                message: error.localizedDescription,
-                buttonTitle: NSLocalizedString("OK", comment: "Button: OK.")
-            )
+
+            DispatchQueue.main.async {
+                self.presentAlert(
+                    title: NSLocalizedString("Something went wrong", comment: "Error message title."),
+                    message: error.localizedDescription,
+                    buttonTitle: NSLocalizedString("OK", comment: "Button: OK.")
+                )
+            }
         }
     }
     
@@ -182,14 +188,53 @@ class FollowersListViewController: GFDataLoadingViewController {
 
 extension FollowersListViewController: UICollectionViewDelegate {
     
-    func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
+//    func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
+//        let offsetY = scrollView.contentOffset.y
+//        let contentHeight = scrollView.contentSize.height
+//        let height = scrollView.frame.size.height
+//
+//        if offsetY > contentHeight - height {
+//            guard hasMoreFollowers, !isLoadingMoreFollowers else { return }
+//
+//            page += 1
+//            getFollowers(username: username, page: page)
+//        }
+//    }
+
+//    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
+//        let offsetY = scrollView.contentOffset.y
+//        let contentHeight = scrollView.contentSize.height
+//        let height = scrollView.frame.size.height
+//
+//        if offsetY > contentHeight - height {
+//            guard hasMoreFollowers, !isLoadingMoreFollowers else { return }
+//
+//            page += 1
+//            getFollowers(username: username, page: page)
+//        }
+//    }
+
+//    func scrollViewDidEndScrollingAnimation(_ scrollView: UIScrollView) {
+//        let offsetY = scrollView.contentOffset.y
+//        let contentHeight = scrollView.contentSize.height
+//        let height = scrollView.frame.size.height
+//
+//        if offsetY > contentHeight - height {
+//            guard hasMoreFollowers, !isLoadingMoreFollowers else { return }
+//
+//            page += 1
+//            getFollowers(username: username, page: page)
+//        }
+//    }
+
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
         let offsetY = scrollView.contentOffset.y
         let contentHeight = scrollView.contentSize.height
         let height = scrollView.frame.size.height
-        
+
         if offsetY > contentHeight - height {
             guard hasMoreFollowers, !isLoadingMoreFollowers else { return }
-            
+
             page += 1
             getFollowers(username: username, page: page)
         }
