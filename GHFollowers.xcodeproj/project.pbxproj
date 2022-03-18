@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4B083CBA27E4A18F005932F9 /* XCUIApplication+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B083CB927E4A18F005932F9 /* XCUIApplication+.swift */; };
 		4B38C06523E459BA0084E8DE /* Follower.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B38C06423E459BA0084E8DE /* Follower.swift */; };
 		4B38C06723E45AD40084E8DE /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B38C06623E45AD40084E8DE /* User.swift */; };
 		4B38C06B23E462330084E8DE /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B38C06A23E462330084E8DE /* NetworkManager.swift */; };
@@ -60,6 +61,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		4B083CB927E4A18F005932F9 /* XCUIApplication+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "XCUIApplication+.swift"; sourceTree = "<group>"; };
 		4B38C06423E459BA0084E8DE /* Follower.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Follower.swift; sourceTree = "<group>"; };
 		4B38C06623E45AD40084E8DE /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		4B38C06A23E462330084E8DE /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
@@ -230,6 +232,7 @@
 			isa = PBXGroup;
 			children = (
 				4BC61E9E2445F6F800B91541 /* GHFollowersUITests.swift */,
+				4B083CB927E4A18F005932F9 /* XCUIApplication+.swift */,
 				4BC61EA02445F6F800B91541 /* Info.plist */,
 			);
 			path = GHFollowersUITests;
@@ -432,6 +435,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4BC61E9F2445F6F800B91541 /* GHFollowersUITests.swift in Sources */,
+				4B083CBA27E4A18F005932F9 /* XCUIApplication+.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
