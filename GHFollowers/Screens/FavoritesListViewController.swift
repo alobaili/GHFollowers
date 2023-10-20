@@ -26,7 +26,26 @@ class FavoritesListViewController: GFDataLoadingViewController {
         
         getFavorites()
     }
-    
+
+    override func updateContentUnavailableConfiguration(
+        using state: UIContentUnavailableConfigurationState
+    ) {
+        super.updateContentUnavailableConfiguration(using: state)
+
+        if favorites.isEmpty {
+            var configuration = UIContentUnavailableConfiguration.empty()
+            configuration.image = .init(systemName: "star")
+            configuration.text = String(localized: "No Favourites", comment: "Empty state message.")
+            configuration.secondaryText = String(
+                localized: "Add a favorite on the follower list screen",
+                comment: "Empty state secondary message."
+            )
+            contentUnavailableConfiguration = configuration
+        } else {
+            contentUnavailableConfiguration = nil
+        }
+    }
+
     func configureViewController() {
         view.backgroundColor = .systemBackground
         title = NSLocalizedString("Favorites", comment: "Faforites screen title (appears in the navigation bar).")
@@ -63,22 +82,13 @@ class FavoritesListViewController: GFDataLoadingViewController {
             }
         }
     }
-    
+
     func updateUI(with favorites: [Follower]) {
-        if favorites.isEmpty {
-            self.showEmptyStateView(
-                withMessage:
-                    NSLocalizedString("No Favorites", comment: "Title for no favorites message.")
-                        + "\n"
-                        + NSLocalizedString("No Favorites Body", comment: "Something like: Add one from the followers screen."),
-                in: self.view
-            )
-        } else {
-            self.favorites = favorites
-            DispatchQueue.main.async {
-                self.tableView.reloadData()
-                self.view.bringSubviewToFront(self.tableView)
-            }
+        self.favorites = favorites
+        setNeedsUpdateContentUnavailableConfiguration()
+        DispatchQueue.main.async {
+            self.tableView.reloadData()
+            self.view.bringSubviewToFront(self.tableView)
         }
     }
 	
@@ -120,16 +130,7 @@ extension FavoritesListViewController: UITableViewDataSource, UITableViewDelegat
             guard let error else {
                 self.favorites.remove(at: indexPath.row)
                 tableView.deleteRows(at: [indexPath], with: .automatic)
-
-                if self.favorites.isEmpty {
-                    self.showEmptyStateView(
-                        withMessage:
-                            NSLocalizedString("No Favorites", comment: "Title for no favorites message.")
-                        + "\n"
-                        + NSLocalizedString("No Favorites Body", comment: "Something like: Add one from the followers screen."),
-                        in: self.view
-                    )
-                }
+                setNeedsUpdateContentUnavailableConfiguration()
 
                 return
             }

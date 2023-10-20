@@ -54,7 +54,28 @@ class FollowersListViewController: GFDataLoadingViewController {
         
         navigationController?.setNavigationBarHidden(false, animated: animated)
     }
-    
+
+    override func updateContentUnavailableConfiguration(
+        using state: UIContentUnavailableConfigurationState
+    ) {
+        super.updateContentUnavailableConfiguration(using: state)
+
+        if followers.isEmpty, !isLoadingMoreFollowers {
+            var configuration = UIContentUnavailableConfiguration.empty()
+            configuration.image = .init(systemName: "person.slash")
+            configuration.text = String(localized: "No Followers", comment: "Empty state message.")
+            configuration.secondaryText = String(
+                localized: "This user has no followers. Go follow them!",
+                comment: "Empty state secondary message."
+            )
+            contentUnavailableConfiguration = configuration
+        } else if isSearching, filteredFollowers.isEmpty {
+            contentUnavailableConfiguration = UIContentUnavailableConfiguration.search()
+        } else {
+            contentUnavailableConfiguration = nil
+        }
+    }
+
     func configureViewController() {
         view.backgroundColor = .systemBackground
         navigationController?.navigationBar.prefersLargeTitles = true
@@ -86,19 +107,22 @@ class FollowersListViewController: GFDataLoadingViewController {
         Task {
             do {
                 let followers = try await NetworkManager.shared.getFollowers(for: username, page: page)
+                dismissLoadingView()
+                isLoadingMoreFollowers = false
                 updateUI(with: followers)
             } catch let error as GFError {
+                dismissLoadingView()
+                isLoadingMoreFollowers = false
                 presentAlert(
                     title: NSLocalizedString("Bad stuff happened", comment: "Error message title."),
                     message: error.localizedDescription,
                     buttonTitle: NSLocalizedString("OK", comment: "Button: OK.")
                 )
             } catch {
+                dismissLoadingView()
+                isLoadingMoreFollowers = false
                 presentDefaultAlert()
             }
-
-            dismissLoadingView()
-            isLoadingMoreFollowers = false
         }
     }
     
@@ -106,16 +130,15 @@ class FollowersListViewController: GFDataLoadingViewController {
         if followers.count < 100 {
             self.hasMoreFollowers = false
         }
+
         self.followers.append(contentsOf: followers)
-        if self.followers.isEmpty {
-            let message = NSLocalizedString("No Followers Body", comment: "This user doesn't have any followers. Go follow them 😀")
-            DispatchQueue.main.async { self.showEmptyStateView(withMessage: message, in: self.view) }
-            return
-        }
+
         DispatchQueue.main.async {
             self.searchController.searchBar.isHidden = false
         }
-        self.updateData(on: self.followers)
+
+        updateData(on: self.followers)
+        setNeedsUpdateContentUnavailableConfiguration()
     }
     
     func configureDataSource() {
@@ -269,6 +292,7 @@ extension FollowersListViewController: UISearchResultsUpdating {
         isSearching = true
         filteredFollowers = followers.filter { $0.login.lowercased().contains(filter.lowercased()) }
         updateData(on: filteredFollowers)
+        setNeedsUpdateContentUnavailableConfiguration()
     }
     
     
