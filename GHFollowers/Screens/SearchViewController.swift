@@ -137,3 +137,9 @@ extension SearchViewController: UITextFieldDelegate {
     
     
 }
+
+// MARK: - Preview
+
+#Preview {
+    SearchViewController()
+}
