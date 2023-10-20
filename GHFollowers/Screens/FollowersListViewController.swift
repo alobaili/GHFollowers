@@ -157,10 +157,10 @@ class FollowersListViewController: GFDataLoadingViewController {
     func addUserToFavorites(user: User) {
         let favorite = Follower(login: user.login, avatarUrl: user.avatarUrl)
 
-        PersistenceManager.updateFavorite(favorite, actionType: .add) { [weak self] (error) in
-            guard let self = self else { return }
+        PersistenceManager.updateFavorite(favorite, actionType: .add) { [weak self] error in
+            guard let self else { return }
             
-            guard let error = error else {
+            guard let error else {
                 DispatchQueue.main.async {
                     self.presentAlert(
                         title: NSLocalizedString("Success!", comment: "Success message title."),
