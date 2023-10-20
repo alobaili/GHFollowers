@@ -18,7 +18,7 @@ struct FollowerView: View {
                     .resizable()
                     .scaledToFit()
             } placeholder: {
-                Image("avatar-placeholder")
+                Image(.avatarPlaceholder)
                     .resizable()
                     .scaledToFit()
             }
